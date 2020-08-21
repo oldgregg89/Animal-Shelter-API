@@ -2,16 +2,16 @@
 
 # _Animal Shelter API_ 
 </strong></h1>
-![colorful-graph](https://media.giphy.com/media/3o6Ztah2Jo4BQReDIs/giphy.gif)
+![Robert-E-Kahn](https://media.giphy.com/media/9Y1uuCxj8AWiC4FjOc/giphy.gif)
 
-####A practice in creating APIs within C# & .Net through a database for an animal shelter._ , 2020 ver 1.0.0_
+#### A practice in creating APIs within C# & .Net through an example of a database for an animal shelter._ , 2020 ver 1.0.0_
 
 #### By _Ian Gregg_
 [Animal-Shelter]()
 
 ## Description
 
-_A practice in creating APIs within C# & .Net through a database for an animal shelter._
+_A practice in creating APIs within C# & .Net through an example of a database for an animal shelter._
 
 ## Setup/Installation Requirements
 
@@ -49,10 +49,28 @@ then `dotnet ef database update`
 
 __
 
-## Specs
+## HTTP Request
 
-| Behavior    | Input | Output |
-| :---------- | ----- | -----: |
+```
+GET /api/
+POST /api/animal
+GET /api/animal/{id}
+PUT /api/animal/{id}
+DELETE /api/animal/{id}
+```
+
+## Example Query
+
+```
+
+```
+
+
+## Sample JSON Response 
+
+```
+
+```
 
 
 
@@ -66,7 +84,7 @@ _Contact Ian Gregg: <iangregg188@gmail.com>_
 
 ## Technologies Used
 
-_The Technologies used in the making of this software was Chrome browser, Visual Studio editor, and Mac, C#, .Net, Authentication with Identity, MySQL, Swagger for Documentation_
+_The Technologies used in the making of this software was Chrome browser, Visual Studio editor, and Mac, C#, .Net, Authentication with Identity, MySQL, pagination_
 
 ### License
 
