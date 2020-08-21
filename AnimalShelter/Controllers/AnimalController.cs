@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using EconomicMappingAPI.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace AnimalShelter.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class AnimalController : ControllerBase
     {
         // GET api/values
         [HttpGet]
