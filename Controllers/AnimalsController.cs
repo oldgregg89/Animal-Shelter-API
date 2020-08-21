@@ -10,11 +10,23 @@ namespace AnimalShelterAPI.solution.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        // GET api/values
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        private AnimalShelterContext _db;
+
+        public StatesController(AnimalShelterAPIContext db)
         {
-            return new string[] { "value1", "value2" };
+            _db = db;
+        }
+
+        // GET api/values
+        [HttpGet("animals")]
+        public ActionResult<IEnumerable<State>> Get(string name)
+        {
+            var query = _db.Animals.AsQueryable();
+            if (name != null)
+            {
+                query = query.Where(entry => entry.Name == name);
+            }
+            return query.ToList();
         }
 
         // GET api/values/5
