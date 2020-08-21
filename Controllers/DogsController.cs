@@ -8,9 +8,10 @@ namespace AnimalShelterAPI.solution.Controllers
 {
     public class DogsController : ControllerBase
     {
+        
         private AnimalShelterContext _db;
 
-        public StatesController(AnimalShelterAPIContext db)
+        public DogsController(AnimalShelterAPIContext db)
         {
             _db = db;
         }
@@ -41,18 +42,18 @@ namespace AnimalShelterAPI.solution.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult<Dog> GetDetails(int id)
         {
-            _db.Dogs.Add(value);
+            _db.Dog.Add(value);
             _db.SaveChanges();
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, [FromBody] Dog value)
         {
             value.DogId = id;
-            _db.Entry(value).State = EntityState.Modified;
+            _db.Entry(value).Dog = EntityState.Modified;
             _db.SaveChanges();
         }
 
@@ -61,7 +62,7 @@ namespace AnimalShelterAPI.solution.Controllers
         public void Delete(int id)
         {
             var dogToDelete = _db.Dogs.FirstOrDefault(entry => entry.DogId == id);
-            _db.Dogs.Remove(dogToDelete);
+            _db.Dog.Remove(dogToDelete);
             _db.SaveChanges();
         }
     }
