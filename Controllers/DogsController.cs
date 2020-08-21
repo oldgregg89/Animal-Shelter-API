@@ -6,8 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AnimalShelterAPI.solution.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
     public class DogsController : ControllerBase
     {
         private AnimalShelterContext _db;
