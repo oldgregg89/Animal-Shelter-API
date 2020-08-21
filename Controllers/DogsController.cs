@@ -53,7 +53,7 @@ namespace AnimalShelterAPI.solution.Controllers
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
-            value.StateId = id;
+            value.DogId = id;
             _db.Entry(value).State = EntityState.Modified;
             _db.SaveChanges();
         }
