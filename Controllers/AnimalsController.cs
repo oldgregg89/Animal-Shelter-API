@@ -31,9 +31,14 @@ namespace AnimalShelterAPI.solution.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public async Task<IActionResult> GetAll([FromQuery] UrlQuery urlQuery)
         {
-            return "value";
+            var validUrlQuery = new UrlQuery(urlQuery.PageNumber, urlQuery.PageSize);
+            var pagedData = _db.Animals
+                .OrderBy(thing => thing.StateId)
+                .Skip((validUrlQuery.PageNumber - 1) * validUrlQuery.PageSize)
+                .Take(validUrlQuery.PageSize);
+            return Ok(pagedData);
         }
 
         // POST api/values
