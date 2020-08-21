@@ -8,7 +8,7 @@ namespace AnimalShelterAPI.solution.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class DogsController : ControllerBase
     {
         private AnimalShelterContext _db;
 
@@ -18,10 +18,10 @@ namespace AnimalShelterAPI.solution.Controllers
         }
 
         // GET api/values
-        [HttpGet("animals")]
-        public ActionResult<IEnumerable<State>> Get(string name)
+        [HttpGet("dogs")]
+        public ActionResult<IEnumerable<Dog>> Get(string name)
         {
-            var query = _db.Animals.AsQueryable();
+            var query = _db.Dogs.AsQueryable();
             if (name != null)
             {
                 query = query.Where(entry => entry.Name == name);
@@ -34,8 +34,8 @@ namespace AnimalShelterAPI.solution.Controllers
         public async Task<IActionResult> GetAll([FromQuery] UrlQuery urlQuery)
         {
             var validUrlQuery = new UrlQuery(urlQuery.PageNumber, urlQuery.PageSize);
-            var pagedData = _db.Animals
-                .OrderBy(thing => thing.StateId)
+            var pagedData = _db.Dogs
+                .OrderBy(thing => thing.DogId)
                 .Skip((validUrlQuery.PageNumber - 1) * validUrlQuery.PageSize)
                 .Take(validUrlQuery.PageSize);
             return Ok(pagedData);
@@ -45,18 +45,26 @@ namespace AnimalShelterAPI.solution.Controllers
         [HttpPost]
         public void Post([FromBody] string value)
         {
+            _db.Dogs.Add(value);
+            _db.SaveChanges();
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
+            value.StateId = id;
+            _db.Entry(value).State = EntityState.Modified;
+            _db.SaveChanges();
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var dogToDelete = _db.Dogs.FirstOrDefault(entry => entry.DogId == id);
+            _db.Dogs.Remove(dogToDelete);
+            _db.SaveChanges();
         }
     }
 }
