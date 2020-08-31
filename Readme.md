@@ -19,7 +19,7 @@ _A practice in creating APIs within C# & .Net through an example of a database f
 * in command line use the command 'git clone (GitHub url)'
 * open the program in a code editor
 * you will need [.NET] (https://dotnet.microsoft.com/download/dotnet-core/2.2) installed to run this program 
-* then install dotnet script REPL by typing `dotnet tool installl -g dotnet-script` in the command line
+* then install dotnet script REPL by typing `dotnet tool install -g dotnet-script` in the command line
 * type dotnet build in the command line to compile the code
 * create a `.gitignore` file and store the bin and obj folders in .gitignore
 * type `dotnet watch run` in the command line to run the program
@@ -62,14 +62,20 @@ DELETE /api/animal/{id}
 ## Example Query
 
 ```
-
+http://localhost:5000/api/Animals/
 ```
 
 
 ## Sample JSON Response 
 
 ```
-
+  {
+    "animalId": 1,
+    "name": "A dog",
+    "breed": "something",
+    "age": 2,
+    "gender": "male"
+  }
 ```
 
 
