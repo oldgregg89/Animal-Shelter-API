@@ -7,7 +7,7 @@
 #### A practice in creating APIs within C# & .Net through an example of a database for an animal shelter._ , 2020 ver 1.0.0_
 
 #### By _Ian Gregg_
-[Animal-Shelter]()
+[Animal-Shelter](https://github.com/oldgregg89/Animal-Shelter-API)
 
 ## Description
 
@@ -47,8 +47,6 @@ in the terminal
 `dotnet ef migrations add Initial`
 then `dotnet ef database update`
 
-__
-
 ## HTTP Request
 
 ```
@@ -78,6 +76,31 @@ http://localhost:5000/api/Animals/
   }
 ```
 
+## Pagination 
+
+This Application programming interface includes pagination which allows the developer to customize and mark up the displayed information of database as they see fit. Its currently set at 10 entries per 1 page under the `UrlQuery.cs` file under `Models`. 
+
+Example below: 
+```
+...
+    {
+        public int PageNumber { get; set; }
+        public int PageSize { get; set; }
+        public UrlQuery()
+        {
+   ---->    this.PageNumber = 1;   <-------//This can change the page number
+   ---->    this.PageSize = 10;    <-------//This can change the number of records shown on the page
+        }
+
+        public UrlQuery(int pageNumber, int pageSize)
+        {
+   ---->     this.PageNumber = pageNumber < 1 ? 1 : pageNumber;     <-------//Set starting page on the database 
+   ---->     this.PageSize = pageSize > 10 ? 10 : pageSize;         <-------//Sets the number of records viewed on each page
+        }
+    }
+ ...
+ ```
+ The developer can set page number with `this.Pagenumber` along with the how many data entries can be shown through the `this.PageSize` (as shown above).
 
 
 ## Known Bugs
