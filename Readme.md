@@ -78,7 +78,7 @@ http://localhost:5000/api/Animals/
 
 ## Pagination 
 
-This Application programming interface includes pagination which allows the developer to customize and mark up the displayed information of database as they see fit. Its currently set at 10 entries per 1 page under the `UrlQuery.cs` file under `Models`. 
+This Application programming interface includes pagination which allows the developer to customize and mark up the displayed information of database as they see fit. Its currently set at 10 entries per 1 page under the `UrlQuery.cs` file under `Models` directory. 
 
 Example below: 
 ```
